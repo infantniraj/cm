@@ -1,6 +1,7 @@
 import 'package:cm/colors.dart';
 import 'package:cm/controllers/popular_product_controller.dart';
 import 'package:cm/controllers/recommended_product_controller.dart';
+import 'package:cm/pages/cart/cart_page.dart';
 import 'package:cm/routes/route_helper.dart';
 import 'package:cm/util/dimentions.dart';
 import 'package:cm/widgets/app_icon.dart';
@@ -48,9 +49,14 @@ class RecommendedFoodDetails extends StatelessWidget {
                       Positioned(
                         right:0,
                         top:0,
-                        child: AppIcon(icon: Icons.circle,size:20,
-                            iconColor:Colors.transparent,
-                            backgroundColor:AppColors.mainColor),
+                        child: GestureDetector(
+                          onTap:(){
+                            Get.to(()=>CartPage());
+                          },
+                          child: AppIcon(icon: Icons.circle,size:20,
+                              iconColor:Colors.transparent,
+                              backgroundColor:AppColors.mainColor),
+                        ),
                       ):
                       Container(),
                       Get.find<PopularProductController>().totalItems>=1?
