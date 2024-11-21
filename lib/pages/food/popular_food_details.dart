@@ -12,15 +12,16 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../colors.dart';
+import '../../routes/route_helper.dart';
 import '../../widgets/big_text.dart';
 import '../../widgets/icons_and_text_widget.dart';
 import '../../widgets/small_text.dart';
 import '../cart/cart_page.dart';
 
 class PopularFoodDetails extends StatelessWidget {
-  int pageId;
-
-  PopularFoodDetails({Key? key,required this.pageId}) : super(key: key);
+  final int pageId;
+  final String page;
+  PopularFoodDetails({Key? key,required this.pageId,required this.page}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,38 +58,45 @@ class PopularFoodDetails extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: (){
-                        Get.to(()=>MainFoodPage());
+                     //   Get.to(()=>MainFoodPage());
+                        if(page=="cartpage"){
+                          Get.toNamed(RouteHelper.getCartPage());
+                        }else{
+                          Get.toNamed(RouteHelper.getInitial());
+                        }
                       },
                       child: AppIcon(icon: (Icons.arrow_back_ios))),
                   GetBuilder<PopularProductController>(builder: (controller){
-                    return Stack(
-                      children: [
-                        AppIcon(icon: (Icons.shopping_cart_checkout_outlined)),
-                        Get.find<PopularProductController>().totalItems>=1?
-                        Positioned(
-                          right:0,
-                          top:0,
-                          child: GestureDetector(
-                            onTap:(){
-                              Get.to(()=>CartPage());
-                            },
+                    return GestureDetector(
+                      onTap: (){
+                        if(controller.totalItems>=1)
+                          Get.toNamed(RouteHelper.getCartPage());
+                      },
+                      child: Stack(
+                        children: [
+                          AppIcon(icon: (Icons.shopping_cart_checkout_outlined)),
+                          controller.totalItems>=1?
+                          Positioned(
+                            right:0,
+                            top:0,
                             child: AppIcon(icon: Icons.circle,size:20,
                                 iconColor:Colors.transparent,
                                 backgroundColor:AppColors.mainColor),
-                          ),
-                        ):
-                            Container(),
-                        Get.find<PopularProductController>().totalItems>=1?
-                        Positioned(
-                          right:3,
-                          top:3,
-                          child: BigText(text: Get.find<PopularProductController>().totalItems.toString(),
-                            size:12,color:Colors.white,),
 
-                        ):
-                        Container(),
+                          ):
+                              Container(),
+                          Get.find<PopularProductController>().totalItems>=1?
+                          Positioned(
+                            right:3,
+                            top:3,
+                            child: BigText(text: Get.find<PopularProductController>().totalItems.toString(),
+                              size:12,color:Colors.white,),
 
-                      ],
+                          ):
+                          Container(),
+
+                        ],
+                      ),
                     );
                   },)
 

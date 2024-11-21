@@ -5,6 +5,7 @@ import 'package:cm/pages/food/popular_food_details.dart';
 import 'package:cm/pages/food/recommended_food_details.dart';
 import 'package:cm/pages/home/food_page_body.dart';
 import 'package:cm/pages/home/main_food_page.dart';
+import 'package:cm/pages/splash/splash_page.dart';
 import 'package:cm/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,17 +22,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularProductController>().getPopularProductList();
-    Get.find<RecommendedProductController>().getRecommendedProductList();
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+    return GetBuilder<PopularProductController>(builder: (_){
+      return GetBuilder<RecommendedProductController>(builder: (_){
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
 
-      home: MainFoodPage(),
-      //home: CartPage(),
-      initialRoute: RouteHelper.initial,
-      getPages: RouteHelper.routes,
-    );
+          //home: MainFoodPage(),
+          //home: SplashScreen(),
+          initialRoute: RouteHelper.getSplashPage(),
+          getPages: RouteHelper.routes,
+        );
+      });
+    });
+
+
   }
 }
 //test
