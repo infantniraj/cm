@@ -1,3 +1,4 @@
+import 'package:cm/controllers/cart_controller.dart';
 import 'package:cm/controllers/popular_product_controller.dart';
 import 'package:cm/controllers/recommended_product_controller.dart';
 import 'package:cm/pages/cart/cart_page.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    //Get.find<CartController>().getCartData();
     return GetBuilder<PopularProductController>(builder: (_){
       return GetBuilder<RecommendedProductController>(builder: (_){
         return GetMaterialApp(

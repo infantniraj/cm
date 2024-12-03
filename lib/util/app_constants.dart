@@ -8,5 +8,6 @@ class AppConstants{
   static const String IMAGE_URI_BASEURL = "http://localhost:8083";
 
   static const String TOKEN="InfiToken";
+  static const String CART_LIST="cart-list";
 
 }
