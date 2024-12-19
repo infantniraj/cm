@@ -89,7 +89,7 @@ class PopularProductController extends GetxController{
       _inCartItems=_cart.getQuantity(product);
 
     }
-    print("the quantity in the cart is "+_inCartItems.toString());
+ //   print("the quantity in the cart is "+_inCartItems.toString());
 
   }
 

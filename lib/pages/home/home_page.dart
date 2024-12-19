@@ -3,6 +3,8 @@ import 'package:cm/pages/home/main_food_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../cart/cart_history.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -19,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   List pages=[
     MainFoodPage(),
     Container(child: Center(child: Text("Next Page"))),
-    Container(child: Center(child: Text("Next Next Page"))),
+    CartHistory(),
     Container(child: Center(child: Text("Next Next next  Page"))),
   ];
 

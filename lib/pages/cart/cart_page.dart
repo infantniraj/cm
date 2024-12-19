@@ -87,7 +87,15 @@ class CartPage extends StatelessWidget {
                                       }else{
                                         var recomendedIndex = Get.find<RecommendedProductController>()
                                             .recommendedProductList.indexOf(_cartList[index].product!);
-                                        Get.toNamed(RouteHelper.getRecommendedFood(recomendedIndex,"cartpage"));
+                                        if(recomendedIndex<0){
+                                          Get.snackbar("History Product", "Product Review is not available for history Products.",
+                                            backgroundColor: AppColors.mainColor,
+                                            colorText: Colors.white,
+                                          );
+                                        }else{
+                                          Get.toNamed(RouteHelper.getRecommendedFood(recomendedIndex,"cartpage"));
+                                        }
+
                                       }
                                     },
                                     child: Container(
@@ -186,6 +194,8 @@ class CartPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: (){
+                    print("tapped");
+                    cartController.addToHistory();
                     //popularProduct.addItem(product);
                   },
                   child: Container(
