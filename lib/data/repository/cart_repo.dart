@@ -25,7 +25,7 @@ class CartRepo{
     });
 
     sharedPreferences.setStringList(AppConstants.CART_LIST, cart);
-    print(sharedPreferences.getStringList(AppConstants.CART_LIST));
+    //print(sharedPreferences.getStringList(AppConstants.CART_LIST));
     //getCartList();
   }
 
