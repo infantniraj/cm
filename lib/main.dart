@@ -1,6 +1,8 @@
 import 'package:cm/controllers/cart_controller.dart';
 import 'package:cm/controllers/popular_product_controller.dart';
 import 'package:cm/controllers/recommended_product_controller.dart';
+import 'package:cm/pages/auth/sign_in_page.dart';
+import 'package:cm/pages/auth/sign_up_page.dart';
 import 'package:cm/pages/cart/cart_page.dart';
 import 'package:cm/pages/food/popular_food_details.dart';
 import 'package:cm/pages/food/recommended_food_details.dart';
@@ -29,10 +31,9 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-
           //home: MainFoodPage(),
-          //home: SplashScreen(),
-          initialRoute: RouteHelper.getSplashPage(),
+          home: SignInPage(),
+          //initialRoute: RouteHelper.getSplashPage(),
           getPages: RouteHelper.routes,
         );
       });
